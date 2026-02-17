@@ -1,0 +1,15 @@
+services:
+  nginx-ssl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nginx-ssl
+    ports:
+      - "443:443"
+    restart: unless-stopped
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
