@@ -8,9 +8,9 @@ COPY docker_config/nginx/nginx-ssl.conf /etc/nginx/conf.d/nginx.conf
 COPY docker_config/nginx/nginx.conf /etc/nginx/nginx.conf
 
 COPY docker_config/ssl/generate-ssl.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/generate-ssl.sh
-RUN /usr/local/bin/generate-ssl.sh
+COPY docker_config/ssl/entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/generate-ssl.sh /usr/local/bin/entrypoint.sh
 
 EXPOSE 443
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/usr/local/bin/entrypoint.sh"]
