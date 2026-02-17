@@ -27,6 +27,7 @@ openssl x509 -req \
   -in /tmp/nginx.csr \
   -CA $CA_CRT \
   -CAkey $CA_KEY \
+  -CAserial /tmp/ca.srl \
   -CAcreateserial \
   -out /etc/nginx/ssl/nginx.crt \
   -days 365 \
@@ -38,4 +39,4 @@ cat /etc/nginx/ssl/nginx.crt $CA_CRT > /etc/nginx/ssl/fullchain.crt
 chmod 600 /etc/nginx/ssl/nginx.key
 chmod 644 /etc/nginx/ssl/nginx.crt /etc/nginx/ssl/fullchain.crt
 
-rm -f /tmp/nginx.csr /tmp/san.ext
+rm -f /tmp/nginx.csr /tmp/san.ext /tmp/ca.srl
