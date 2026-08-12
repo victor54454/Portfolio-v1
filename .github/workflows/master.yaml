@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build Docker image nginx:alpine
         run: |
-          buildah build -t victor54454/portfolio-louis:latest -f Dockerfile .
+          buildah build -t orktk/projet:portfolio-louis -f Dockerfile .
         continue-on-error: false
       - name: Login to DockerHub
         run: |
@@ -20,7 +20,7 @@ jobs:
         continue-on-error: false
       - name: Push Docker image to DockerHub
         run: |
-          buildah push victor54454/portfolio-louis:latest
+          buildah push orktk/projet:portfolio-louis
         continue-on-error: false
       - name: Restart Kubernetes Deployment
         run: |
