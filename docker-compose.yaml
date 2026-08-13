@@ -1,11 +1,11 @@
 services:
-  nginx-ssl:
+  nginx-http:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: nginx-ssl
+    container_name: nginx-http
     ports:
-      - "443:443"
+      - "80:80"
     restart: unless-stopped
     networks:
       - webnet
